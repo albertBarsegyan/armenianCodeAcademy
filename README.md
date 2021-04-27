@@ -13,6 +13,6 @@
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
 
-\*\*\* This is the place where I made this project
+### This is the place where I made this project
 
 ![alt text](https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZGFya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
