@@ -1,18 +1,45 @@
-# These are my projects. {align=center}
+<div align="center">These are my lessons</div>
 
-## Project steps
+## Every day I will add one folder
 
-- First I setup project configs
-- Then I made button and add functionality
-- Add table
-- Then add styles
-
-<img src="https://images.unsplash.com/photo-1619486052695-3452e0ce829a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80"
+<img src="https://images.unsplash.com/photo-1453906971074-ce568cccbc63?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
 
-### This is the place where I made this project
+### This is part of setups
 
-![alt text](https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZGFya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+```json
+{
+  "name": "armeniancodeacademy",
+  "version": "1.0.0",
+  "description": "Lessons",
+  "main": "index.js",
+  "scripts": {
+    "test": "tast",
+    "commit": "cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertBarsegyan/armenianCodeAcademy.git"
+  },
+  "author": "Albert Barsegyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertBarsegyan/armenianCodeAcademy/issues"
+  },
+  "homepage": "https://github.com/albertBarsegyan/armenianCodeAcademy#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
+```
 
-#### Function part
+> Task folder list
+
+> > Day 04.28 folder
+> > Day 05.06 folder
