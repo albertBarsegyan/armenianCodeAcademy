@@ -7,16 +7,18 @@ function pairLargestSum(array) {
 
 function productPair(array) {
   let result = [];
+  let productList = [];
   for (let i = 0; i < array.length; i++) {
+    if (array[i + 1] === undefined) {
+      break;
+    }
     let pair = [array[i], array[i + 1]];
     result.push(pair);
     pair = [];
   }
   result = result.forEach((item, i) => {
-    if (item) {
-    }
-    // item.reduce((a, b) => a * b);
+    productList[i] = item.reduce((a, b) => a * b);
   });
-  return result;
+  return Math.max(...productList);
 }
 console.log(productPair([1, 2, 3, 4, 5]));
