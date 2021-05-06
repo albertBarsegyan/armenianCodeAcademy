@@ -41,5 +41,5 @@
 
 > Task folder list
 
-> > Day 04.28 folder
-> > Day 05.06 folder
+>> Day 04.28 folder
+>> Day 05.06 folder
