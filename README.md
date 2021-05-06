@@ -1,4 +1,4 @@
-# These are my projects. {align=center}
+$$\text{This is some centered text}$$
 
 ## Project steps
 
