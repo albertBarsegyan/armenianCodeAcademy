@@ -1,4 +1,4 @@
-<div align="center">These are my lessons</div>
+<div align="center" style='font-size:48px'>These are my lessons</div>
 
 ## Every day I will add one folder
 
