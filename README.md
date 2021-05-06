@@ -1,6 +1,4 @@
-# This is my project .
-
-- I will produce my steps when I made this project \*
+# These are my projects. {align=center}
 
 ## Project steps
 
