@@ -9,15 +9,6 @@
 ### This is part of setups
 
 ```json
-{
-  "name": "armeniancodeacademy",
-  "version": "1.0.0",
-  "description": "Lessons",
-  "main": "index.js",
-  "scripts": {
-    "test": "tast",
-    "commit": "cz"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/albertBarsegyan/armenianCodeAcademy.git"
@@ -28,18 +19,9 @@
     "url": "https://github.com/albertBarsegyan/armenianCodeAcademy/issues"
   },
   "homepage": "https://github.com/albertBarsegyan/armenianCodeAcademy#readme",
-  "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
-}
 ```
 
 ## Task folder list
 
- *Day 04.28 folder
+ * Day 04.28 folder
  * Day 05.06 folder
