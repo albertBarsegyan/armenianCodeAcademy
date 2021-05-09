@@ -11,7 +11,7 @@ Array.prototype.mapV2 = function (callback, ...args) {
     throw new TypeError('this is not defined');
   }
   //  If exist more arguments second will thisArg
-  if (args[0]) {
+  if (args.length > 0) {
     thisArg = args[0];
   }
   // loop over [this] array
