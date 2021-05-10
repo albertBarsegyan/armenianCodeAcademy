@@ -1,9 +1,7 @@
-let object = {
-  name: 'mike',
-  age: 25,
-};
-function print(a, b) {
-  return this.name + ' ' + a + ' ' + b;
-}
-let k = print.call(null, 10, 15);
-console.log(k);
+let arr = [1, 2, 3, 4, 5, 1, 6, 7, 8];
+let i = arr.reduce((acc, item, i, array) => {
+  acc[item]++;
+
+  return acc;
+}, {});
+console.log(i);
