@@ -1,9 +1,12 @@
-let object = {
-  name: 'mike',
-  age: 25,
-};
-function print(a, b) {
-  return this.name + ' ' + a + ' ' + b;
+function makeBoard(size) {
+  let board = [];
+  let row = [];
+  for (let i = 0; i < size; i++) {
+    row.push('_');
+  }
+  for (let i = 0; i < size; i++) {
+    board.push(row);
+  }
+  return board;
 }
-let k = print.call(null, 10, 15);
-console.log(k);
+console.log(makeBoard(5));
