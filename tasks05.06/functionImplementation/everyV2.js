@@ -30,7 +30,7 @@ Array.prototype.everyV2 = function (callback, ...args) {
   return !result.includes(false);
 };
 let h = [1, 2, 3, 4];
-let p = h.everyV2((a) => a > 10);
+let p = h.everyV2((a) => a > 0);
 console.log(p);
 
 // let m = h.every((a) => a > 9);
