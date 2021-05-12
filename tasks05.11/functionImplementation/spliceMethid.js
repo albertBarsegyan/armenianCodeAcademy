@@ -14,6 +14,11 @@ Array.prototype.spliceImmutable = function (start, deleteCount = 0, ...items) {
   if (del >= array.length - start) {
     this.length = 0;
   }
+  for (let i = 0; i < mainArray.length; i++) {
+    if (i < start + del) {
+      this[i];
+    }
+  }
 };
 
 let arr = [1, 2, 3];
