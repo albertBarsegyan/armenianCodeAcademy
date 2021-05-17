@@ -159,7 +159,7 @@ function sumTo(n) {
   return n + sumTo(n - 1);
 }
 
-console.log(sumTo(100));
+// console.log(sumTo(100));
 
 let list = {
   value: 1,
@@ -204,3 +204,227 @@ function parseList(data) {
 //   return arr;
 // }
 // console.log(parser(list));
+
+function shapeArea(n) {
+  let res = [];
+  for (let i = 0; i < n; i++) {
+    res.push(`*`);
+    for (let j = i; j < n; j++) {}
+    res.push(`*`);
+  }
+  return res;
+}
+// console.log(shapeArea(5));
+function makeArrayConsecutive2(statues) {
+  let min = Math.min(...statues);
+  let max = Math.max(...statues);
+  let res = [];
+  for (let i = min; i <= max; i++) {
+    res.push(i);
+  }
+  return res.length - statues.length;
+}
+
+function almostIncreasingSequence(sequence) {
+  let bool = true;
+  let unique = new Set(sequence);
+  let sorted = [...sequence].sort((a, b) => a - b);
+  let count = 0;
+
+  sorted.forEach((item, index) => {
+    if (item !== sequence[index]) {
+      count++;
+    }
+  });
+  if (count > 2) {
+    bool = false;
+  }
+
+  if (sorted[sequence.length - 1] === sequence[0]) {
+    bool = true;
+  }
+  return bool;
+}
+// console.log(almostIncreasingSequence([1, 3, 2, 1]));
+
+function sockMerchant(n, arr) {
+  let res = arr.reduce((acc, item, index, array) => {
+    if (acc.hasOwnProperty(item)) {
+      acc[item]++;
+    } else {
+      acc[item] = 1;
+    }
+
+    return acc;
+  }, {});
+  let pairCount = 0;
+  for (const key in res) {
+    if (Object.hasOwnProperty.call(res, key)) {
+      if (res[key] >= 2) {
+        pairCount += Math.floor(res[key] / 2);
+      }
+    }
+  }
+  return pairCount;
+}
+// console.log(sockMerchant(5, [6, 5, 2, 3, 5, 2, 2, 1, 1, 5, 1, 3, 3, 3, 5]));
+
+// function almostIncreasingSequence(sequence) {
+//   let sort = [...sequence].sort((a, b) => a - b);
+//   let count = 0;
+//   sequence.forEach((item, index) => {
+//     if (item !== sort[index]) {
+//       count++;
+//     }
+//   });
+//   let bool = false;
+//   if (count > 2) {
+//     bool = true;
+//   }
+//   return [sort, count];
+// }
+// console.log(almostIncreasingSequence([1, 2, 1, 2]));
+
+// function almostIncreasingSequence(sequence) {
+//   let invalidItemsCount = 0;
+
+//   for (let i = 1; i < sequence.length; i++) {
+//     if (sequence[i] <= sequence[i - 1]) {
+//       invalidItemsCount++;
+//       if (invalidItemsCount > 1) return false;
+//       if (sequence[i] <= sequence[i - 2] && sequence[i + 1] <= sequence[i - 1])
+//         return false;
+//     }
+//   }
+
+//   return true;
+// }
+let building = [
+  [0, 1, 2, 0],
+  [0, 5, 0, 1],
+  [2, 1, 3, 10],
+];
+
+function matrixElementsSum(matrix) {
+  let normHouse = [];
+  matrix.forEach((item, index, arr) => {
+    item.forEach((mini, miniIndex, miniArr) => {
+      if (mini === 0) {
+        try {
+          arr[index + 1][miniIndex];
+        } catch (error) {
+          return;
+        }
+        arr[index + 1][miniIndex] = 0;
+      }
+    });
+    normHouse = [...arr];
+  });
+  let res = normHouse.reduce((acc, item, index) => {
+    acc += item.reduce((a, b) => a + b);
+    return acc;
+  }, 0);
+  return res;
+}
+// console.log(matrixElementsSum(building));
+
+function allLongestStrings(inputArray) {
+  let longest = 0;
+  inputArray.forEach((item, index) => {
+    if (item.length > longest) {
+      longest = item.length;
+    }
+  });
+  let res = inputArray.reduce((acc, item) => {
+    if (item.length === longest) {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+  return res;
+}
+// console.log(allLongestStrings(['aba', 'aa', 'ad', 'vcd', 'aba']));
+
+function commonCharacterCount(s1, s2) {
+  let s1Chars = s1.split('').reduce((acc, item) => {
+    if (acc.hasOwnProperty(item)) {
+      acc[item]++;
+    } else {
+      acc[item] = 1;
+    }
+    return acc;
+  }, {});
+  let s2Chars = s2.split('').reduce((acc, item) => {
+    if (acc.hasOwnProperty(item)) {
+      acc[item]++;
+    } else {
+      acc[item] = 1;
+    }
+    return acc;
+  }, {});
+  let commons = [];
+  for (const key in s1Chars) {
+    if (Object.hasOwnProperty.call(s1Chars, key)) {
+      if (s2Chars.hasOwnProperty(key)) {
+        if (s2Chars[key] < s1Chars[key]) {
+          commons.push(s2Chars[key]);
+        } else {
+          commons.push(s1Chars[key]);
+        }
+      }
+    }
+  }
+  if (commons.length === 0) {
+    commons = 0;
+  } else {
+    commons = commons.reduce((acc, item) => acc + item);
+  }
+  return commons;
+}
+// console.log(commonCharacterCount('aab', 'bba'));
+
+function isLucky(n) {
+  if (String(n).length % 2 !== 0) {
+    throw new Error(n + ' digits count is not even');
+  }
+  let numberFirstPart = String(n)
+    .substring(0, String(n).length / 2)
+    .split('')
+    .reduce((acc, item) => acc + Number(item), 0);
+  let numberSecondPart = String(n)
+    .substring(String(n).length / 2)
+    .split('')
+    .reduce((acc, item) => acc + Number(item), 0);
+
+  let bool = false;
+  if (numberFirstPart === numberSecondPart) {
+    bool = true;
+  }
+  return bool;
+}
+// console.log(isLucky(456781));
+
+// a = [-1, 150, 190, 170, -1, -1, 160, 180]
+function sortByHeight(a) {
+  let sorted = new Array(a.length);
+  let withoutTree = a.filter((item) => item !== -1).sort((a, b) => a - b);
+  let count = 0;
+  a.forEach((item, index) => {
+    if (item === -1) {
+      sorted[index] = -1;
+    } else {
+      sorted[index] = withoutTree[count++];
+    }
+  });
+
+  return sorted;
+}
+function reverseInParentheses(inputString) {
+  let res;
+  if (/(\(\S+\))/g.test(inputString)) {
+    res = /(\(\S+\))/g.exec(inputString);
+  }
+  return res[0];
+}
+
+console.log(reverseInParentheses('foo(bar(baz))blim'));

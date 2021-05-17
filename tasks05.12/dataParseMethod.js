@@ -1,22 +1,37 @@
 let data = {
   name: 'mike',
   age: 25,
+  file4: 'img',
   email1: 'asd@mail.ru',
   email2: 'ert@mail.ru',
-  email3: 'qwe@mail.ru',
   email4: 'zxc@mail.ru',
   file1: 'jpg',
   file2: 'png',
   file3: 'svg',
-  file4: 'img',
+  email3: 'qwe@mail.ru',
+  file11: 'vs',
 };
 
+function sortObject(object) {
+  let keys = Object.keys(object)
+    .sort()
+    .reduce((acc, item, index) => {
+      acc[item] = object[item];
+      return acc;
+    }, {});
+  return keys;
+}
+
 function parseDataReducer(defaultData) {
-  let data = Object.entries(defaultData);
+  let data = Object.entries(sortObject(defaultData));
   let a = [];
   let parsed = data.reduce(
     (acc, item, index, array) => {
-      let repeated = item[0].slice(0, item[0].length - 1);
+      let repeated = '';
+      if (/([0-9])+$/g.test(item[0])) {
+        repeated = item[0].replace(/([0-9])+$/g, '');
+      }
+
       if (repeated !== acc.lastRep) {
         a = [];
       }
@@ -40,8 +55,6 @@ function parseDataReducer(defaultData) {
 
   return parsed;
 }
+// console.log(parseDataReducer(data));
 
 console.log(parseDataReducer(data));
-
-// let t = a.slice(0, 3);
-// console.log(a, t);
