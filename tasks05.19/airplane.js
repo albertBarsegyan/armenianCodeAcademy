@@ -1,5 +1,5 @@
 const Airplane = {
-  name: 'Su-75',
+  name: '',
   isFlying: false,
   takeOf() {
     this.isFlying = true;
@@ -9,4 +9,10 @@ const Airplane = {
   },
 };
 
-console.log(Airplane);
+// let obj = {
+//   __proto__: Airplane,
+//   isFlying: false,
+// };
+let p = Object.assign({}, Airplane);
+p.takeOf();
+console.log(p);
