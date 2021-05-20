@@ -24,7 +24,7 @@ function Person(name, age) {
   this.poop = function () {
     this.stomach = [];
   };
-  this.toString = () => {
+  this.toString = function () {
     return `${this.name}, ${this.age}`;
   };
 }
@@ -32,4 +32,5 @@ let mike = new Person('Mike', 25);
 mike.eat('snickers');
 console.log(mike.stomach);
 mike.poop();
+
 console.log(mike.toString());
