@@ -10,8 +10,31 @@ Should cause the the tank to go down taking milesPerGallon into account.
 STRETCH: A car which runs out of fuel while driving can't drive any more distance:
 The drive method should return a string "Iran out of fuel at x miles!" x being odometer.*/
 
-function Car(model, milesPerGallon) {
+function CarConstructor(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
   this.tank = 0;
   this.odometer = 0;
-  this.fill = function (gallons) {};
+  this.fill = function (gallons) {
+    this.tank += gallons;
+  };
+  this.drive = function (distance) {
+    let maxDistance = this.tank / this.milesPerGallon;
+    if (distance > maxDistance) {
+      this.tank = 0;
+      this.odometer = maxDistance;
+      return `I run out of fuel at ${maxDistance}`;
+    } else {
+      this.odometer = distance;
+      this.tank -= distance * this.milesPerGallon;
+      return `Odometer: ${this.odometer} , Tank: ${this.tank}`;
+    }
+  };
+  this.carInfo = function () {
+    return `Model :${this.model} `;
+  };
 }
+let carConst = new CarConstructor('bmw', 1);
+carConst.fill(500);
+console.log(carConst);
+console.log(carConst.drive(100));
