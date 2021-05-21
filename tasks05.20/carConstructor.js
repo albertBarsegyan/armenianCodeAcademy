@@ -12,6 +12,30 @@ The drive method should return a string "Iran out of fuel at x miles!" x being o
 
 function Car(model, milesPerGallon) {
   this.tank = 0;
+  this.model = model;
   this.odometer = 0;
-  this.fill = function (gallons) {};
+  this.fill = function (gallons) {
+    this.tank += gallons;
+  };
+  this.drive = function (distance) {
+    let maxDistance = this.tank / milesPerGallon;
+    let restFuel = this.tank - distance * milesPerGallon;
+    if (restFuel > 0) {
+      this.tank = restFuel;
+      this.odometer = distance;
+      return `tank -> ${this.tank}, odometer -> ${this.odometer} `;
+    }
+    if (distance > maxDistance) {
+      this.tank = 0;
+      this.odometer = maxDistance;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  };
+  this.carInfo = function () {
+    return `Car model is ${this.model} `;
+  };
 }
+
+let mers = new Car('Mercedes', 2);
+mers.fill(100);
+console.log(mers.drive(100));
