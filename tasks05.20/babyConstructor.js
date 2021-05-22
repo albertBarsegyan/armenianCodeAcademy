@@ -22,3 +22,16 @@ function Person(name, age) {
     return `${this.name}, ${this.age}`;
   };
 }
+
+function Baby(favoriteToy, ...properties) {
+  Person.call(this, ...properties);
+  Baby.prototype = Object.create(Person.prototype);
+  this.favoriteToy = favoriteToy;
+  this.play = function () {
+    return `Playing with ${this.favoriteToy}`;
+  };
+}
+
+// console.log(Baby.prototype);
+let yoyo = new Baby('yoyo', 'Lucy', 6);
+console.log(yoyo);
