@@ -16,5 +16,6 @@ function ret(a, b) {
 let obj = {
   name: 'mike',
 };
+let y = ret.applyV2(obj, [10, 15]);
 
-console.log(ret.applyV2(obj, [10, 15]));
+console.log(typeof y);
