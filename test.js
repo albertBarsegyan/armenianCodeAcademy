@@ -426,3 +426,63 @@ function reverseInParentheses(inputString) {
   }
   return res[0];
 }
+
+// console.log(reverseInParentheses('foo(bar(baz))blim'));
+
+function cloning() {
+  return this.name;
+}
+
+let obj = {
+  name: 'mike',
+  age: 25,
+};
+
+let p = Object.create(obj, {
+  city: {
+    value: 'yerevan',
+    writable: false,
+  },
+});
+// Object.setPrototypeOf(obj, Boolean.prototype);
+// console.log(k);
+// p.city = 'Yegipt';
+// p.age = 45;
+
+let objo = {};
+function ret(name) {
+  this.name = name;
+  return this.name;
+}
+let pt = ret.bind(objo);
+let y = new pt('Fuck');
+
+// console.log(pt('mike'));
+// console.log(objo);
+// console.log(y.name);
+
+let props = { age: 25, name: 'John' };
+let px = Object.getOwnPropertyDescriptors(props);
+// console.log(px);
+Object.defineProperties(props, {
+  val: {
+    get() {
+      let letters = this.name.split('');
+      return letters[0];
+    },
+  },
+});
+
+function reverseInParentheses(s) {
+  if (s.match(/\([a-z]*\)/)) {
+    return reverseInParentheses(
+      s.replace(
+        /\([a-z]*\)/,
+        Array.from(s.match(/\([a-z]*\)/)[0].replace(/\(|\)/g, ''))
+          .reverse()
+          .join('')
+      )
+    );
+  } else return s;
+}
+console.log(reverseInParentheses('foo(bar)'));
