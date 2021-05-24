@@ -426,5 +426,3 @@ function reverseInParentheses(inputString) {
   }
   return res[0];
 }
-
-console.log(reverseInParentheses('foo(bar(baz))blim'));

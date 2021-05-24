@@ -9,10 +9,11 @@ const Airplane = {
   },
 };
 
-// let obj = {
-//   __proto__: Airplane,
-//   isFlying: false,
-// };
-let p = Object.assign({}, Airplane);
+let obj = {
+  __proto__: Airplane,
+  isFlying: false,
+  name: 'Mike',
+};
+
 p.takeOf();
 console.log(p);
