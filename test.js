@@ -473,16 +473,39 @@ Object.defineProperties(props, {
   },
 });
 
-function reverseInParentheses(s) {
-  if (s.match(/\([a-z]*\)/)) {
-    return reverseInParentheses(
-      s.replace(
-        /\([a-z]*\)/,
-        Array.from(s.match(/\([a-z]*\)/)[0].replace(/\(|\)/g, ''))
+// console.log(reverseInParentheses('foo(bar)'));
+
+//For a = [50, 60, 60, 45, 70], the output should be
+//alternatingSums(a) = [180, 105].
+
+function alternatingSums(a) {
+  let firstTeam = [a[0]];
+  let secondTeam = [];
+  for (let index = 1; index < a.length; index++) {
+    if (index % 2 === 0) {
+      firstTeam.push(a[index]);
+    } else {
+      secondTeam.push(a[index]);
+    }
+  }
+  firstTeam = firstTeam.reduce((acc, item) => acc + item, 0);
+  secondTeam = secondTeam.reduce((acc, item) => acc + item, 0);
+  return [firstTeam, secondTeam];
+}
+console.log(alternatingSums([50, 60, 60, 45, 70]));
+
+function reversePar(string) {
+  if (string.match(/\([A-z]*\)/)) {
+    return reversePar(
+      string.replace(
+        /\([A-z]*\)/,
+        Array.from(string.replace(string.match(/\(|\)/)[0], ''))
           .reverse()
           .join('')
       )
     );
-  } else return s;
+  } else {
+    return string;
+  }
 }
-console.log(reverseInParentheses('foo(bar)'));
+console.log(reversePar('foo(bar(baz))'));
