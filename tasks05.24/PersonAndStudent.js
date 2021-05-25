@@ -49,7 +49,8 @@ class Person {
 }
 
 class Student extends Person {
-  constructor(year, fee, program = []) {
+  constructor(year, fee, program, ...parentArgs) {
+    super(...parentArgs);
     this._year = year;
     this._fee = fee;
     this._program = program;
@@ -71,8 +72,50 @@ class Student extends Person {
   }
   set program(p) {
     this._program = p;
+  }
+  set passExam({ programName, grade } = {}) {
+    if (isAllPassed(program)) {
+      if (this.program.every((prog) => prog.grade >= 50)) {
+        this.year -= 1;
+      } else {
+        return 'You are not passed your exams';
+      }
+    } else {
+      changeProgramGrade(this.program, { programName, grade });
     }
-    set passExam(programName, grade) {
-        
-    }
+  }
 }
+function changeProgramGrade(arr, { itemName, grade }) {
+  arr.forEach((item) => {
+    if (item.programName === itemName) {
+      item.grade = grade;
+    }
+  });
+}
+
+function isAllPassed(programsList = []) {
+  if (programsList.every((program) => program.grade !== null)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+let programs = [
+  {
+    programName: 'math',
+    grade: null,
+  },
+  {
+    programName: 'informatics',
+    grade: null,
+  },
+];
+
+let stud = new Student(2020, 1000, programs, {
+  firstName: 'Mike',
+  lastName: 'Johnson',
+  gender: 'male',
+  age: 25,
+});
+console.log(stud);
