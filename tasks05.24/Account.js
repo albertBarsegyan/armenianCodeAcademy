@@ -17,7 +17,7 @@ toString() */
 
 class Account {
   constructor(name, balance) {
-    this._id = Account.counter;
+    this._id = this.counter();
     this._name = name;
     this._balance = balance;
     this.credit = function (amount) {
@@ -28,7 +28,7 @@ class Account {
       if (amount > this._balance) {
         return 'Amount exceeded balance.';
       } else {
-        this._balance - amount;
+        this._balance -= amount;
         return this._balance;
       }
     };
@@ -36,9 +36,9 @@ class Account {
       if (this._balance < amount) {
         return 'Amount exceeded balance.';
       } else {
-        this._balance - amount;
+        this.debit(amount);
         anotherAccount.credit(amount);
-        return this._balance;
+        return this.balance;
       }
     };
     this.toString = function () {
@@ -47,13 +47,13 @@ class Account {
     };
   }
   get id() {
-    return this.id;
+    return this._id;
   }
   get name() {
     return this._name;
   }
   get balance() {
-    return this.balance;
+    return this._balance;
   }
   set name(n) {
     this._name = n;
@@ -68,14 +68,17 @@ class Account {
       return false;
     }
   }
-  static get counter() {
+  counter() {
     Account._counter = (Account._counter || 0) + 1;
     return Account._counter;
   }
 }
 
-// let account = new Account('Jake', 100);
-// let p = new Account('moki', 250);
-// console.log(account.toString());
-console.log(Account.counter);
-console.log(Account.counter);
+let account = new Account('Jake', 100);
+let p = new Account('moki', 100);
+let t = new Account('josh', 100);
+
+p.transferTo(t, 50);
+
+console.log(account.debit(10));
+console.log(p.balance, t.balance);
