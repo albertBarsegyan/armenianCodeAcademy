@@ -1,20 +1,15 @@
-/* Book should have:
-fields
-title
-author(Author)
-price
-quantity
-methods
-getters forfields
-setters forfields
-getProfit() - which calculates the profit from the book based on the price and quantity.
-toString()*/
 class Book {
   constructor({ title, author, price, quantity } = {}) {
-    this._title = title;
-    this._author = author;
-    this._price = price;
-    this._quantity = quantity;
+    this._title =
+      typeof title !== 'string' ? `${title} type is not string` : title;
+    this._author =
+      typeof author !== 'object' ? `${author} type is not object` : author;
+    this._price =
+      typeof price !== 'number' ? `${price} type is not number` : price;
+    this._quantity =
+      typeof quantity !== 'number'
+        ? `${quantity} type is not number`
+        : quantity;
   }
   set title(tit) {
     this._title = tit;
@@ -45,9 +40,33 @@ class Book {
   }
 }
 
+class Author {
+  constructor(name, email, gender) {
+    this._name = name;
+    this._email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g.test(email)
+      ? email
+      : 'wrond email address';
+    this._gender = gender;
+    this.toString = function () {
+      return `Ms. ${this.name}`;
+    };
+  }
+  get name() {
+    return this._name;
+  }
+  get email() {
+    return this._email;
+  }
+  get gender() {
+    return this._gender;
+  }
+}
+
+let biden = new Author('Biden', 'biden@gmail.com', 'male');
+
 let bookInfo = {
   title: 'Bed girl',
-  author: 'Joe Bidon',
+  author: biden,
   price: 10.4,
   quantity: 10,
 };

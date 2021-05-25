@@ -10,7 +10,9 @@ toString()*/
 class Author {
   constructor(name, email, gender) {
     this._name = name;
-    this._email = email;
+    this._email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g.test(email)
+      ? email
+      : 'wrond email address';
     this._gender = gender;
     this.toString = function () {
       return `Ms. ${this.name}`;
@@ -26,6 +28,3 @@ class Author {
     return this._gender;
   }
 }
-
-let auth = new Author('Mike', '@', 'male');
-console.log(auth.toString());

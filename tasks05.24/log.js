@@ -12,19 +12,43 @@ clearHistory function to remove the history memory. */
 
 class myConsole {
   constructor(name) {
-    this.name = name;
+    this._historyList = [];
+    this._name = name;
   }
   log(...input) {
-    console.log(`${this.name}: `, ...input);
+    let res = [];
+    if (Array.isArray(input)) {
+      input.forEach((item) => {
+        let stringedItem = JSON.stringify(item);
+        res.push(stringedItem);
+      });
+      res = JSON.stringify(res).replace(/"|\\/g, '');
+      res = res.substring(1, res.length - 1);
+      this._historyList.push(res);
+      console.log(res);
+    }
   }
-  history([min, max] = []) {
-    min = Math.max(1, min);
-    return this.historyList
-      .slice(min - 1, Math.max(min, max) || this.historyList.length)
-      .join('\n');
+
+  history([min = undefined, max = undefined] = []) {
+    let res = this._historyList.slice(min, max);
+    return res;
+  }
+  clearHistory() {
+    this._historyList = [];
+  }
+  get name() {
+    return this._name;
+  }
+  set name(n) {
+    this._name = n;
   }
 }
 let p = new myConsole('jake');
 p.log([1, 2, 3], 'meto');
 p.log(100, { a: 10 });
 p.log(100, 1, 2, 3);
+// p.clearHistory();
+console.log(p.history([0, 1]));
+// let arr = [1, 2, 3, 'fuck', true, { a: 10 }];
+// let stringed = JSON.stringify(arr);
+// console.log(stringed);
