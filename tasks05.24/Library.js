@@ -1,6 +1,6 @@
 // function helpers
 // check book from list
-function checkIfBookExist(bookList = [], { author, title }) {
+function checkIfBookExist(bookList = [], { author, title } = {}) {
   let res = [];
   bookList.forEach((book) => {
     if (book.author === author && book.title === title && book.quantity > 0) {
@@ -9,12 +9,28 @@ function checkIfBookExist(bookList = [], { author, title }) {
   });
   return res.includes(true) ? true : false;
 }
+function findBookFromLibrary(lib, book, returnType = 'boolean') {
+  let res = [];
+  let result;
+  lib.books.forEach((b) => {
+    if (b.author === book.author && b.title === book.title) {
+      res.push(b);
+    }
+  });
+  if (returnType === 'array') {
+    result = res.length > 0 ? res[0] : false;
+  } else if (returnType === 'boolean') {
+    result = res.length > 0 ? true : false;
+  }
+  return result;
+}
+
 // check reader from readersList
-function checkIfReaderExist(readersList, readerId) {
+function checkIfReaderExist(readersList, Id) {
   let res = [];
   readersList.forEach((r = {}) => {
-    const { _, __, id } = r;
-    if (id === readerId) {
+    const { _, __, readerId } = r;
+    if (readerId === Id) {
       res.push(true);
     }
   });
@@ -41,6 +57,7 @@ class Book {
       return `${this.author} ${this.title}`;
     };
   }
+
   get author() {
     return this._author;
   }
@@ -76,14 +93,34 @@ class LibraryBook extends LibraryBookBase {
     super(...props);
     this.increaseQuantityBy = function (amount) {
       this.quantity += amount;
-      return this.quantity;
     };
     this.decreaseQuantityBy = function (amount) {
       this.quantity -= amount;
-      return this.quantity;
     };
   }
 }
+
+// reader book
+class ReaderBook extends Book {
+  constructor(author, title, expirationDate, isReturned) {
+    super(author, title);
+    this._expirationDate = expirationDate;
+    this._bookId = this.counter();
+    this._isReturned = isReturned;
+  }
+
+  get isReturned() {
+    return this._isReturned;
+  }
+  set isReturned(bool) {
+    this._isReturned = bool;
+  }
+  counter() {
+    ReaderBook._counter = (ReaderBook._counter || 0) + 1;
+    return ReaderBook._counter;
+  }
+}
+
 // let newLibBook = new LibraryBook('Michigan', 'Add words', 1);
 // newLibBook.decreaseQuantityBy(1);
 // newLibBook.decreaseQuantityBy(1);
@@ -99,17 +136,17 @@ class Reader {
     };
     this.borrowBook = function (book, library) {
       if (
-        checkIfBookExist(library, book) &&
-        book.__proto__ === ReaderBook.prototype
+        book instanceof Book &&
+        findBookFromLibrary(library, book, 'boolean')
       ) {
         // push to books list
-        this.books = book;
-        library.books.forEach((b) => {
-          if (b.author === book.author && b.title === book.title) {
-            // get 1 book from list
-            b.decreaseQuantityBy(1);
-          }
-        });
+
+        this.books = new ReaderBook(book.author, book.title, '5 days', false);
+        library.books
+          .find((b) => {
+            return b.author === book.author && b.title === book.title;
+          })
+          .decreaseQuantityBy(1);
       }
     };
   }
@@ -127,7 +164,6 @@ class Reader {
   }
   set books(book) {
     this._books.push(book);
-    return this._books;
   }
 
   counter() {
@@ -173,10 +209,13 @@ class Library {
         checkIfBookExist(this.books, book) &&
         checkIfReaderExist(this.readers, readerId)
       ) {
-        return this.books.find((b) => {
-          let { author, title } = b;
-          return author === book.author && title === book.title;
-        });
+        let readerBook = new ReaderBook(
+          book.author,
+          book.title,
+          '5 days',
+          false
+        );
+        return readerBook;
       }
     };
   }
@@ -192,15 +231,15 @@ class Library {
 }
 
 // books for reader1
-let book1ForReader1 = new Book('Keke', 'Go go');
-let book2ForReader1 = new Book('Loll', 'Come here');
+let book1ForReader1 = new ReaderBook('Keke', 'Go go', '3 days', false);
+let book2ForReader1 = new ReaderBook('Loll', 'Come here', '5 days', false);
 let booksForReader1 = [book1ForReader1, book2ForReader1];
 let reader1 = new Reader('Mike', 'Jordan', booksForReader1);
 // console.log(reader1);
 
 // reader 2 info
-let book1ForReader2 = new Book('Reno', 'Piko');
-let book2ForReader2 = new Book('Toto', 'Ju ju');
+let book1ForReader2 = new ReaderBook('Reno', 'Piko');
+let book2ForReader2 = new ReaderBook('Toto', 'Ju ju');
 let booksForReader2 = [book1ForReader2, book2ForReader2];
 let reader2 = new Reader('Pike', 'Trump', booksForReader2);
 // console.log(reader2);
@@ -217,6 +256,10 @@ let yerevanLib = new Library(books, readers);
 
 yerevanLib.addBook(book1ForReader2);
 yerevanLib.addBook(book1ForReader2);
-console.log(yerevanLib);
+// console.log(yerevanLib);
 // console.log(yerevanLib.doHaveBook(book1ForReader1));
 // console.log(yerevanLib.lendBook(book1ForReader2, 2));
+// reader1.borrowBook(new Book('Sherenc', 'Eka'), yerevanLib);
+// console.log(yerevanLib);
+// console.log(reader1);
+// console.log(findBookFromLibrary(yerevanLib, avBook, 'boolean'));
