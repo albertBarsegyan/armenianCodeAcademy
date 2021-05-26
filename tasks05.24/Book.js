@@ -72,5 +72,29 @@ let bookInfo = {
 };
 let book = new Book(bookInfo);
 book.quantity = 15;
-console.log(book);
-console.log(book.getProfit);
+// console.log(book);
+// console.log(book.getProfit);
+
+const Human = {
+  init(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  },
+};
+
+class Parent {
+  constructor(name, age) {
+    this._name = name;
+    this._age = age;
+  }
+  getName() {
+    return this._name;
+  }
+}
+class Child extends Parent {
+  constructor(...props) {
+    super(...props);
+  }
+}
+let c = new Child('Mike', 25);
+console.log(c.getName());
