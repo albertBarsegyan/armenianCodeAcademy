@@ -9,4 +9,14 @@ const sumOfSubset = (array) => {
     subset.reduce((acc, item) => acc + item, 0)
   );
 };
-console.log(sumOfSubset([7, 7, 8]));
+console.log(sumOfSubset([1, 2, 3, 4]));
+
+function countTrue(arr) {
+  let count = 0;
+  arr.forEach((item) => {
+    if (item === true) {
+      count++;
+    }
+  });
+  return count;
+}

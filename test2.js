@@ -40,14 +40,3 @@ function makeError(arr) {
   });
   return res;
 }
-
-class GlobalError extends Error {
-  constructor(...props) {
-    super(...props);
-  }
-  get info() {
-    return this;
-  }
-  static;
-}
-console.log(GlobalError);

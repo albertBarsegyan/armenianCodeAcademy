@@ -510,3 +510,12 @@ function reversePar(string) {
 }
 // console.log(reversePar('foo(bar(baz))'));
 // making hard binding
+function getSubs(array) {
+  return array.reduce(
+    (acc, item) => {
+      return acc.concat(acc.map((accItem) => [item, ...accItem]));
+    },
+    [[]]
+  );
+}
+console.log(getSubs([1, 2, 3]));
