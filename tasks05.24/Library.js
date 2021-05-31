@@ -1,5 +1,3 @@
-// function helpers
-// check book from list
 function checkIfBookExist(bookList = [], { author, title } = {}) {
   let res = [];
   bookList.forEach((book) => {
@@ -37,8 +35,6 @@ function checkIfReaderExist(readersList, Id) {
   return res.includes(true) ? true : false;
 }
 
-/* Book  */
-// Main class book
 class Book {
   constructor(author, title) {
     this._author = author;
@@ -120,10 +116,6 @@ class ReaderBook extends Book {
     return ReaderBook._counter;
   }
 }
-
-// let newLibBook = new LibraryBook('Michigan', 'Add words', 1);
-// newLibBook.decreaseQuantityBy(1);
-// newLibBook.decreaseQuantityBy(1);
 
 class Reader {
   constructor(firstName, lastName, books = []) {

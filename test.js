@@ -508,4 +508,5 @@ function reversePar(string) {
     return string;
   }
 }
-console.log(reversePar('foo(bar(baz))'));
+// console.log(reversePar('foo(bar(baz))'));
+// making hard binding
