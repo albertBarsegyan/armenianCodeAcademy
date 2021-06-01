@@ -1,5 +1,5 @@
 const object = {
-  _name_: 'jordge',
+  _name_: "jordge",
   _age_: 25,
 };
 Object.defineProperties(object, {
@@ -21,7 +21,7 @@ const ob = {
     this._name_ = val;
   },
 };
-Object.defineProperty(ob, 'name', {
+Object.defineProperty(ob, "name", {
   enumerable: false,
 });
 
