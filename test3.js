@@ -26,4 +26,6 @@ function getPrimeList(number, primeList = []) {
   }
   return getPrimeList(number / primeList[primeList.length - 1], primeList);
 }
-console.log(getPrimeList(101));
+let arr = [1, 2, 3, 4, 5];
+let str = JSON.stringify(arr);
+console.log(JSON.parse(str));

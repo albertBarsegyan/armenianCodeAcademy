@@ -14,4 +14,3 @@ function joinNestedArray(arr, list = []) {
   });
   return list;
 }
-console.log(joinNestedArray([1, 2, [1, 2, [7, [5, 7, 8, 111], 8, 9, 10]], 10]));
