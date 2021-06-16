@@ -5,28 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <script src="./index.js" defer></script>
     <title>Form</title>
 </head>
 
 <body>
-    <div class="validation-message" id='messageContainer'>
-        <span id="errorMessage" class="validation-text">Hello</span>
-    </div>
+
     <div class="container">
         <div class="validationMessage"></div>
         <div class="form-container">
             <form action="#" class="form-container__content" id="loginForm">
                 <div>
                     <input type="email" name="email" id="email" placeholder="Email" class="email-input">
+                    <div class="email-message" id="messageContainer">
+                        <p>Invalid email address</p>
+                    </div>
                 </div>
                 <div>
-                    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
-                        placeholder="Phone number">
+                    <input type="text" name="phoneNumber" value="+374" class="phonecode">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone number" class="phone-number">
+                    <div class="email-message" id="phoneContainer">
+                        <p>Invalid phone number</p>
+                    </div>
                 </div>
                 <div><button type="submit" id="sendButton">Send</button></div>
             </form>
+        </div>
+    </div>
+    <div class="modal-container">
+        <div class="modal-content">
+            <div class="modal-close"><button type="button" id="closeButton">X</button></div>
+            <h1 class="modal-content__header">Congratulations you win.</h1>
+            <p class="modal-content__disc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ut a
+                maiores aut consequatur nemo
+                perspiciatis mollitia perferendis quae repellendus.</p>
         </div>
     </div>
 </body>

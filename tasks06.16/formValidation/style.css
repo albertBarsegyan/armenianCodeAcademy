@@ -2,8 +2,12 @@
   margin: 0;
   padding: 0;
 }
+button {
+  outline: 0;
+}
 :root {
   font-size: 16px;
+  font-family: 'Lato', sans-serif;
 }
 .container {
   height: 100vh;
@@ -24,10 +28,11 @@
   justify-content: center;
   flex-direction: column;
 }
-.form-container__content div {
-  margin: 10px 0;
+.form-container__content > div {
+  margin: 25px 0;
 }
-.form-container__content input {
+.phone-number,
+.email-input {
   border: 0;
   padding: 10px 20px;
   outline: 0;
@@ -36,6 +41,17 @@
   border-bottom: 1px solid rgb(163, 23, 190);
   transition: 0.5s;
 }
+.phonecode {
+  border: 0;
+  padding: 10px 0;
+  outline: 0;
+  font-size: 1.5rem;
+  color: rgb(163, 23, 190);
+  border-bottom: 1px solid rgb(163, 23, 190);
+  transition: 0.5s;
+  width: 4.5rem;
+}
+
 .form-container__content input:focus {
   border-bottom: 2px solid rgb(163, 23, 190);
 }
@@ -70,16 +86,77 @@
   font-size: 1.5rem;
 }
 
+.email-message {
+  display: none;
+  opacity: 0;
+  border: 2px solid rgb(240, 41, 41);
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  margin: 0;
+  padding: 5px 10px;
+  transition: 0.5s;
+}
+.email-message p {
+  text-align: center;
+  color: rgb(240, 41, 41);
+  font-size: 1.5rem;
+}
+/* .phonecode {
+} */
 .validation-message--invalid {
   border-bottom: 2px solid rgb(240, 41, 41) !important;
 }
 .validation-message--success {
   border-bottom: 2px solid rgb(39, 180, 39) !important;
 }
-/* 
-.validation-text--invalid {
-  color: rgb(240, 41, 41);
+
+.modal-container {
+  display: none;
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
 }
-.validation-text--success {
-  color: rgb(39, 180, 39);
-} */
+.modal-content {
+  width: 80%;
+  position: relative;
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  border: 1px solid rgb(163, 23, 190);
+}
+.modal-content__header {
+  margin: 20px 0;
+  color: rgb(163, 23, 190);
+}
+.modal-content__disc {
+  font-size: 1.2rem;
+  width: 80%;
+  text-align: center;
+  color: rgb(163, 23, 190);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.modal-close button {
+  background: transparent;
+  padding: 10px 20px;
+  border: 1px solid rgb(240, 41, 41);
+  color: rgb(240, 41, 41);
+  font-size: 1.5rem;
+  transition: 0.5s;
+}
+.modal-close button:hover {
+  background: rgb(240, 41, 41);
+  padding: 10px 20px;
+  border: 1px solid rgb(240, 41, 41);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
