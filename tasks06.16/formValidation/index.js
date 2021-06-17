@@ -4,9 +4,10 @@ const sendButton = document.querySelector('#sendButton');
 const messageContainer = document.querySelector('#messageContainer');
 const messageBlock = document.querySelector('#messageContainer');
 const phoneNumberContainer = document.querySelector('#phoneContainer');
+const phoneCode = document.querySelector('.phonecode');
 const modalContainer = document.querySelector('.modal-container');
 const closeButton = document.querySelector('#closeButton');
-let openModal = 0;
+
 function emailValid(e) {
   const emailCheckReg =
     /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
@@ -14,6 +15,7 @@ function emailValid(e) {
   if (emailCheckReg.test(this.value)) {
     e.target.classList.remove('validation-message--invalid');
     e.target.classList.add('validation-message--success');
+
     e.target.style.color = 'rgb(39, 180, 39)';
     setTimeout(() => {
       messageBlock.style.opacity = 0;
@@ -21,10 +23,10 @@ function emailValid(e) {
     setTimeout(() => {
       messageBlock.style.display = 'none';
     }, 600);
-    openModal = 1;
   } else {
     e.target.classList.remove('validation-message--success');
     e.target.classList.add('validation-message--invalid');
+
     e.target.style.color = 'rgb(240, 41, 41)';
     messageBlock.style.display = 'block';
     setTimeout(() => {
@@ -39,6 +41,8 @@ function phoneValid(e) {
     phoneCheckRed.test(this.value) &&
     [8, 9].includes(e.target.value.length)
   ) {
+    phoneCode.classList.remove('validation-message--invalid');
+    phoneCode.classList.add('validation-message--success');
     e.target.style.color = 'rgb(39, 180, 39)';
     e.target.classList.remove('validation-message--invalid');
     e.target.classList.add('validation-message--success');
@@ -48,8 +52,9 @@ function phoneValid(e) {
     setTimeout(() => {
       phoneNumberContainer.style.display = 'none';
     }, 600);
-    ++openModal;
   } else {
+    phoneCode.classList.remove('validation-message--success');
+    phoneCode.classList.add('validation-message--invalid');
     e.target.style.color = 'rgb(240, 41, 41)';
     e.target.classList.remove('validation-message--success');
     e.target.classList.add('validation-message--invalid');
@@ -62,14 +67,16 @@ function phoneValid(e) {
 
 sendButton.addEventListener('click', function (e) {
   e.preventDefault();
-  if (openModal === 2) {
+  console.log(email.classList, phone.classList);
+  if (
+    email.classList.contains('validation-message--success') &&
+    phone.classList.contains('validation-message--success')
+  ) {
     modalContainer.style.display = 'flex';
     setTimeout(() => {
       modalContainer.style.opacity = '1';
     }, 500);
-    console.log(openModal);
   } else {
-    console.log(openModal);
     console.log('dont');
   }
 });
