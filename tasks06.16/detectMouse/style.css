@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #111;
+}
+.round {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 100%;
+}
+.round--click {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgb(243, 55, 55);
+  opacity: 1;
+  transition: 0.5s;
+  border-radius: 100%;
+}
+.round--right-click {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: rgb(55, 99, 243);
+  opacity: 1;
+  transition: 0.5s;
+  border-radius: 100%;
+}
