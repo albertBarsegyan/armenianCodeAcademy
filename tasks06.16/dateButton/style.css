@@ -1,0 +1,46 @@
+:root {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.time {
+  font-size: 2rem;
+  margin: 10px 0;
+  position: absolute;
+  top: calc(50% - 50px);
+  color: #e26811;
+  z-index: 3;
+  background: white;
+  width: 100%;
+  text-align: center;
+  height: 200px;
+  display: none;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+/* .button-container {
+} */
+.btn {
+  border: 1px solid transparent;
+  border-top-color: currentcolor;
+  border-top-style: none;
+  border-top-width: 0px;
+  border-top: 1px solid #f08639;
+  font-size: 1.5rem;
+  padding: 20px 40px;
+  color: #f08639;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+}
+.btn:hover {
+  border: 1px solid #e26811;
+}
