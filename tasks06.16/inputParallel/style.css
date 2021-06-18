@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  font-size: 18px;
+  --main-color: rgb(16, 106, 148);
+}
+button,
+input {
+  outline: 0;
+}
+button:focus {
+  outline: 0;
+}
+li {
+  list-style: none;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+.todo-content {
+  width: 80%;
+  position: absolute;
+  top: 50px;
+}
+.todo-text {
+  transition: 0.5s;
+}
+.input-container {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#todoInput {
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  width: 80%;
+  box-sizing: border-box;
+}
+
+.todo-list__container {
+  /* display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center; */
+}
+.todo-list__item > span {
+  line-break: anywhere;
+  overflow: visible;
+}
+.todo-list__content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo-list__list {
+  width: 80%;
+  overflow: visible;
+  line-break: anywhere;
+  padding: 5px 10px;
+}
+.todo-list__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-list__item-container {
+  width: 100%;
+  opacity: 1;
+  transition: 0.5s;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 10px 0;
+}
+.btn {
+  padding: 10px;
+  margin: 5px;
+  background: transparent;
+  border: 1px solid #222;
+  cursor: pointer;
+}
+.input--main {
+  padding: 10px 20px;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  font-size: 1rem;
+}
+
+.remove-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.border--success {
+  border: 1px solid rgb(97, 231, 97);
+}
+.color--success {
+  color: rgb(97, 231, 97);
+}
+
+.btn > i {
+  font-size: 1rem;
+}
+.done-button {
+  border: 1px solid rgb(97, 231, 97);
+}
+.done-button > i {
+  color: rgb(97, 231, 97);
+}
+.remove-button {
+  border: 1px solid rgba(230, 59, 59, 0.932);
+  color: rgba(230, 59, 59, 0.932);
+}
+.edit-button {
+  border: 1px solid rgb(36, 104, 231);
+  color: rgb(36, 104, 231);
+}
+.font-size--size {
+  font-size: 1.3rem;
+}
