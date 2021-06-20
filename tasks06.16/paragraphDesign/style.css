@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  font-size: 18px;
+  --main-color: rgb(16, 106, 148);
+}
+button,
+input {
+  outline: 0;
+}
+
+button:focus {
+  outline: 0;
+}
+li {
+  list-style: none;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+.todo-content {
+  width: 80%;
+  position: absolute;
+  top: 50px;
+}
+.todo-text {
+  transition: 0.5s;
+}
+.input-container {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#todoInput {
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  width: 80%;
+  box-sizing: border-box;
+}
+.paragraph__container {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 2rem;
+  color: #222;
+}
+#inputText {
+  padding: 20px 0;
+  transition: 0.5s;
+}
+.setting-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input--normal {
+  padding: 10px 20px;
+  border: 1px solid rgb(16, 106, 148);
+  font-size: 1rem;
+  color: rgb(16, 106, 148);
+  margin: 10px;
+}
+.btn {
+  padding: 10px 15px;
+  background: transparent;
+  border: 1px solid rgb(16, 106, 148);
+  font-size: 1rem;
+  color: rgb(16, 106, 148);
+  cursor: pointer;
+}
+
+.input--success {
+  color: rgb(46, 255, 46) !important;
+  border: 1px solid rgb(46, 255, 46) !important;
+  transition: 0.5s;
+}
+.input--invalid {
+  color: rgb(255, 46, 46) !important;
+  border: 1px solid rgb(255, 46, 46) !important;
+  transition: 0.5s;
+}
