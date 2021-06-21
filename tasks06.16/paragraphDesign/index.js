@@ -4,19 +4,6 @@ const inputText = document.querySelector('#inputText');
 const colorInput = document.querySelector('#colorValue');
 const backInput = document.querySelector('#backValue');
 const applyButton = document.querySelector('#applyButton');
-// creating list item container
-function makeListItemContainer(event) {
-  inputText.innerText = event.target.value;
-}
-
-// event listeners
-todoInput.addEventListener('keypress', function (e) {
-  if (e.keyCode === 13) {
-    if (e.target.value.length > 0) {
-      makeListItemContainer(e);
-    }
-  }
-});
 
 // checking if string is number hex
 function checkIfHex(input) {
@@ -26,6 +13,15 @@ function checkIfHex(input) {
   }
   return false;
 }
+
+// event listeners
+todoInput.addEventListener('keypress', function (e) {
+  if (e.keyCode === 13) {
+    if (e.target.value.length > 0) {
+      inputText.innerText = e.target.value;
+    }
+  }
+});
 
 function onInputCheck(e) {
   if (checkIfHex(e.target)) {
@@ -52,3 +48,5 @@ applyButton.addEventListener('click', function (e) {
     inputText.style.backgroundColor = String(backInput.value);
   }
 });
+
+// console.log(window.history.replaceState(null, null, 'make'));
