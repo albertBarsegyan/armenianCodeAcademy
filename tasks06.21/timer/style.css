@@ -7,6 +7,7 @@
 }
 
 .container {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +15,21 @@
   height: 100vh;
   background: #181818;
   color: white;
+  flex-direction: column;
 }
+.message {
+  position: absolute;
+  top: 20%;
+  left: calc(0px - 20%);
+  display: block;
+  opacity: 1;
+  transition: 0.6s;
+}
+.message > span {
+  color: #ff1212;
+  font-size: 4rem;
+}
+
 .timer-content {
   /* text-align: center; */
   display: flex;
@@ -78,4 +93,5 @@
   color: white;
   outline: 0;
   overflow: hidden;
+  text-align: center;
 }
