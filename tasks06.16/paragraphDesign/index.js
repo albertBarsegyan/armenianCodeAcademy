@@ -50,3 +50,10 @@ applyButton.addEventListener('click', function (e) {
 });
 
 // console.log(window.history.replaceState(null, null, 'make'));
+function hello(func) {
+  return func();
+}
+
+hello(() => {
+  console.log('I am callback ');
+});
