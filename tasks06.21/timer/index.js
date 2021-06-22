@@ -70,11 +70,12 @@ function timerStart(hourInput, minuteInput, secondInput) {
     }
   }, 1000);
 }
-
+// event listener
 function startEvent(e) {
   if (messageBlock.style.display === 'block') {
     messageBlock.style.left = 'calc(0px - 20%)';
     messageBlock.style.transform = 'translateX(0%)';
+    messageBlock.style.opacity = 0;
     setTimeout(() => {
       messageBlock.style.display = 'none';
     }, 650);
@@ -92,7 +93,6 @@ function startEvent(e) {
       : null;
   }
 }
-
 function stopEvent() {
   clearInterval(secondCount);
   secondCount = undefined;
