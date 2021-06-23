@@ -89,11 +89,11 @@ function timerStart(hourInput, minuteInput, secondInput) {
     secondInput.value -= 1;
     console.log(Number(secondInput.value));
     if (Number(secondInput.value) < 0) {
-      secondInput.value = 60;
+      secondInput.value = 59;
       minuteInput.value -= 1;
     }
     if (Number(minuteInput.value) < 0) {
-      minuteInput.value = 60;
+      minuteInput.value = 59;
       hourInput.value -= 1;
     }
   }, 1000);
