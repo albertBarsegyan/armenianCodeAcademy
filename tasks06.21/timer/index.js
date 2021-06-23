@@ -25,40 +25,12 @@ inputTime.forEach((element) => {
 // output
 const timerOutput = document.querySelector('#timerOutput');
 let secondCount;
+
 // event listener
-function startEvent(e) {
-  if (messageBlock.style.display === 'block') {
-    messageBlock.style.left = 'calc(0px - 20%)';
-    messageBlock.style.transform = 'translateX(0%)';
-    messageBlock.style.opacity = 0;
-    setTimeout(() => {
-      messageBlock.style.display = 'none';
-    }, 650);
-  }
-  if (
-    checkIfInputIsTime(hourInput) &&
-    checkIfInputIsTime(minuteInput) &&
-    checkIfInputIsTime(secondInput)
-  ) {
-    inputTime.forEach((input) => {
-      input.setAttribute('disabled', '');
-    });
-    secondCount === undefined
-      ? timerStart(hourInput, minuteInput, secondInput)
-      : null;
-  }
-}
-
 startButton.addEventListener('click', startEvent);
-
 stopButton.addEventListener('click', stopEvent);
-resetButton.addEventListener('click', (e) => {
-  stopEvent();
-  inputTime.forEach((input) => {
-    input.removeAttribute('disabled', '');
-    input.value = '';
-  });
-});
+resetButton.addEventListener('click', resetEvent);
+
 // functions
 function checkIfInputIsTime(input) {
   const timeRegex = /^\d{1,2}/;
@@ -68,7 +40,7 @@ function checkIfInputIsTime(input) {
     return false;
   }
 }
-
+// button events
 function timerStart(hourInput, minuteInput, secondInput) {
   secondCount = setInterval(() => {
     if (
@@ -98,8 +70,37 @@ function timerStart(hourInput, minuteInput, secondInput) {
     }
   }, 1000);
 }
-
+// event listener
+function startEvent(e) {
+  if (messageBlock.style.display === 'block') {
+    messageBlock.style.left = 'calc(0px - 20%)';
+    messageBlock.style.transform = 'translateX(0%)';
+    messageBlock.style.opacity = 0;
+    setTimeout(() => {
+      messageBlock.style.display = 'none';
+    }, 650);
+  }
+  if (
+    checkIfInputIsTime(hourInput) &&
+    checkIfInputIsTime(minuteInput) &&
+    checkIfInputIsTime(secondInput)
+  ) {
+    inputTime.forEach((input) => {
+      input.setAttribute('disabled', '');
+    });
+    secondCount === undefined
+      ? timerStart(hourInput, minuteInput, secondInput)
+      : null;
+  }
+}
 function stopEvent() {
   clearInterval(secondCount);
   secondCount = undefined;
+}
+function resetEvent(e) {
+  stopEvent();
+  inputTime.forEach((input) => {
+    input.removeAttribute('disabled', '');
+    input.value = '';
+  });
 }
