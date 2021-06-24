@@ -1,0 +1,8 @@
+.api-info {
+  width: 100%;
+  text-align: center;
+}
+#jsonData {
+  font-size: 3rem;
+  color: rgb(12, 12, 12);
+}
