@@ -9,22 +9,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <script src="./index.js" defer></script>
-    <title>Fetch request</title>
+    <title>Dog List</title>
 </head>
 
 <body>
 
     <div class="container">
-        <div class="api-info">
-            <span id="jsonData"> Hello</span>
-        </div>
-        <div class="image-container" id="imageContainer">
+        <div class="items-list" id="listContainer">
+            <div class="list-content">
+                <label for="cars" class="label-data">-- Select a breed --</label>
 
+                <select name="dogList" id="itemList">
+                    <option value="select">Select dog</option>
+                </select>
+            </div>
+            <div class="image-container">
+                <img id="imageContainer" width="500">
+            </div>
         </div>
-        <!-- <div class="image-container" id="imgContainer">
-            <img src="https://images.unsplash.com/photo-1624352320183-b2b522225c42?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1601&q=80"
-                alt="" width="500">
-        </div> -->
     </div>
 </body>
 
