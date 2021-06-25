@@ -2,15 +2,12 @@ const productMainContainer = document.querySelector('#productContainer');
 const searchButton = document.querySelector('#searchButton');
 const searchInput = document.querySelector('#searchInput');
 const pageList = document.querySelector('#pageList');
-let productCount = 0;
 searchButton.addEventListener('click', (e) => {
   productMainContainer.innerText = '';
   pageList.innerText = '';
-  let inputVal = searchInput.value.trim().replaceAll(' ', function (value) {
-    return '+';
-  });
+
   // get data from api
-  getDataFromApi(inputVal, e);
+  getDataFromApi(urlText(searchInput), e, 1);
 });
 // find text from list subject list (there are numbers)
 function getText(textList) {
@@ -59,31 +56,23 @@ function createPageButtons(count) {
   }
 }
 function pageButtonEvent(e) {
-  productContainer.innerText = '';
-  pageList.innerText = '';
-  let dataThenButtons = new Promise((res, rej) => {
-    if (true) {
-      res(getDataFromApi(Number(e.target.innerText), searchInput.value, e));
-      console.log('done event ');
-      return true;
-    }
-  });
-  dataThenButtons.then((res) => {
-    console.log('done then');
-    createPageButtons(productCount);
-  });
+  productMainContainer.innerText = '';
+  getDataFromApi(urlText(searchInput), e, Number(e.target.value) + 1);
 }
 
-function getDataFromApi(inputValue, e) {
+function getDataFromApi(inputValue, e, page) {
+  let buttonStartPointValue = e.target.innerText;
   e.target.innerText = 'Loading...';
   // get data from api
-  fetch(`http://openlibrary.org/search.json?q=${inputValue}&page=1`)
+  return fetch(
+    `http://openlibrary.org/search.json?q=${inputValue}&page=${page}`
+  )
     .then((res) => {
       return res.json();
     })
     .then((res) => {
       let productList = [];
-      e.target.innerText = 'Search';
+      e.target.innerText = buttonStartPointValue;
       // make object for every book
       res.docs.forEach((element) => {
         let bookInfo = {};
@@ -104,6 +93,12 @@ function getDataFromApi(inputValue, e) {
       if (productList.length === 0) {
         throw new Error('There isn"t any book with this name ');
       }
+      return Math.floor(productList.length);
+    })
+    .then((res) => {
+      pageList.innerText = '';
+      createPageButtons(res);
+      return true;
     })
     .catch((err) => {
       let errMessage = document.createElement('p');
@@ -112,4 +107,11 @@ function getDataFromApi(inputValue, e) {
       productMainContainer.appendChild(errMessage);
       return false;
     });
+}
+// make plus based text for url
+function urlText(input) {
+  let inputVal = input.value.trim().replaceAll(' ', function (value) {
+    return '+';
+  });
+  return inputVal;
 }

@@ -60,10 +60,13 @@ button {
   margin: 0 0 20px 0;
 }
 .page-list {
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   flex-direction: row;
+  width: 80%;
+  overflow: auto;
 }
 .page-number {
   padding: 10px;
