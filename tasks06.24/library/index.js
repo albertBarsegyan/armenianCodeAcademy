@@ -93,7 +93,7 @@ function getDataFromApi(inputValue, e, page) {
       if (productList.length === 0) {
         throw new Error('There isn"t any book with this name ');
       }
-      return Math.floor(productList.length);
+      return Math.floor(productList.length / 21);
     })
     .then((res) => {
       pageList.innerText = '';

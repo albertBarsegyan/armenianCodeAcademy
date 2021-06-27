@@ -1,4 +1,5 @@
 const productMainContainer = document.querySelector('#productMainContainer');
+// fetch data from api
 function restyleDataFromApi(url) {
   let productList = [];
   return fetch(url)
@@ -22,35 +23,22 @@ function restyleDataFromApi(url) {
       });
     });
 }
-// restyleDataFromApi('https://ghibliapi.herokuapp.com/films/');
+restyleDataFromApi('https://ghibliapi.herokuapp.com/films/');
 // make product container
 function createProductContainer(object) {
   let productContainer = document.createElement('div');
   productContainer.classList.add('product');
-  // information container
-  let informationContainer = document.createElement('div');
-  informationContainer.classList.add('information');
-  let titleP = document.createElement('p');
-  titleP.classList.add('title');
-  titleP.innerText = `Film title - ${object.title}`;
-  // description
-  let textArea = document.createElement('span');
-  textArea.classList.add('product-description');
-  textArea.innerText = object.description;
-  // director
-  let directorP = document.createElement('p');
-  directorP.classList.add('director');
-  directorP.innerText = object.director;
-  // year
-  let yearP = document.createElement('p');
-  yearP.classList.add('publish-year');
-  yearP.innerText = object.releaseDate;
-
-  let producer = document.createElement('p');
-  producer.innerText = object.producer;
-  informationContainer.append(titleP, textArea, directorP, producer, yearP);
-
-  // append to product container
-  productContainer.append(informationContainer);
+  productContainer.innerHTML = `<div class="product-head">
+                 <h2>${object.title}</h2>
+                     </div>
+          <div class="product-desc">
+        <p>${object.description}</p>
+    </div>
+     <div class="product-info">
+   <p>Director: <span>${object.director}</span></p>
+   <p>Producer: <span>${object.producer}</span></p>
+   <p>Release: <span>${object.releaseDate}</span></p>
+    </div>`;
   productMainContainer.appendChild(productContainer);
+  // information container
 }
