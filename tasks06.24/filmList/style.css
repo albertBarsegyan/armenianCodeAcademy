@@ -1,10 +1,22 @@
 :root {
   font-size: 16px;
 }
+.product-information {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #333;
+  margin: 10px auto;
+  padding: 5px 40px;
+  font-size: 1.2rem;
+  width: 90%;
+}
 .product-container {
-  margin: 10px 0;
+  margin: 50px 40px 60px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-gap: 40px;
 }
 .product-description {
   padding: 10px 20px;
@@ -27,7 +39,7 @@
 }
 .product-info {
   border: 1px solid #333;
-  margin: 0;
+  margin: 10px 0;
   padding: 5px 20px;
   font-size: 1.2rem;
 }
