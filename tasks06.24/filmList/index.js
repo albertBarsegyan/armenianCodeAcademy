@@ -54,3 +54,11 @@ function createProductContainer(object) {
   productContainer.append(informationContainer);
   productMainContainer.appendChild(productContainer);
 }
+
+
+function clojure(){
+let val = 0;
+return function(addValue) {
+return val+= addValueW
+}
+}
