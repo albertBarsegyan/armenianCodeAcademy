@@ -522,4 +522,35 @@ function getSubs(array) {
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
 }
-console.log(numberWithCommas(1234));
+// console.log(numberWithCommas(1234));
+
+let menu = [
+  {
+    name: 'coca_cola',
+    type: 'drink',
+    price: 2.4,
+  },
+  {
+    name: 'pizza',
+    type: 'food',
+    price: 3,
+  },
+  {
+    name: 'cheese',
+    type: 'food',
+    price: 1.8,
+  },
+  {
+    name: 'coffee',
+    type: 'drink',
+    price: 2,
+  },
+];
+
+let food = menu.reduce((acc, item) => {
+  if (item.type === 'food') {
+    acc.push(item.name);
+  }
+  return acc;
+}, []);
+console.log(food);

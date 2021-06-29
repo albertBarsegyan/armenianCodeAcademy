@@ -54,8 +54,7 @@ class CoffeeShop {
     }
   };
   listOrders = function () {
-    let res = [];
-    this.orders.forEach((food) => res.push(food.name));
+    let res = this.orders.map((order) => order.name);
     return res;
   };
   fulfillOrder = function () {
@@ -66,35 +65,37 @@ class CoffeeShop {
       : 'All orders have been fulfilled!';
   };
   dueAmount = function () {
-    let res = [];
-    this.orders.forEach((item) => {
-      res.push(item.price);
-    });
-    return res.reduce((acc, item) => acc + item, 0);
+    let amount = this.orders.reduce((acc, item) => {
+      acc + item.price;
+      return acc;
+    }, 0);
+    return amount;
   };
   cheapestItem = function () {
-    let cheapestProduct = [];
-    this.menu.forEach((item) => {
-      cheapestProduct.push(item.price);
-    });
-    return Math.min(...cheapestProduct);
+    let cheapestProduct = this.menu.reduce((acc, item) => {
+      if (item.price < acc) {
+        acc = item.price;
+      }
+      return acc;
+    }, +Infinity);
+    return cheapestProduct;
   };
   drinksOnly() {
-    let drinks = [];
-    this.menu.forEach((item) => {
+    let food = this.menu.reduce((acc, item) => {
       if (item.type === 'drink') {
-        drinks.push(item.name);
+        acc.push(item.name);
       }
-    });
-    return drinks;
+      return acc;
+    }, []);
+    return food;
   }
   foodOnly() {
-    let food = [];
-    this.menu.forEach((item) => {
+    let food = this.menu.reduce((acc, item) => {
       if (item.type === 'food') {
-        food.push(item.name);
+        acc.push(item.name);
       }
-    });
+      return acc;
+    }, []);
     return food;
   }
 }
@@ -115,8 +116,8 @@ p.addOrder('coffee');
 p.addOrder('coca_cola');
 // console.log(p.fulfillOrder());
 // console.log(p.fulfillOrder());
-// console.log(p.listOrders());
+console.log(p.listOrders());
 console.log(p.dueAmount());
-console.log(p.cheapestItem());
-console.log(p.drinksOnly());
-console.log(p.foodOnly());
+// console.log(p.cheapestItem());
+// console.log(p.drinksOnly());
+// console.log(p.foodOnly());
