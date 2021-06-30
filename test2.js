@@ -16,13 +16,7 @@ function getDataFromAPI(url, options) {
       });
       return filteredData;
     });
-  //   setTimeout(() => {
-  //     console.log(dataList);
-  //   }, 2000);
 }
-// let val = getDataFromAPI(apiUrl, {
-//   method: 'GET',
-// });
 
 async function asyncGetData(url, options) {
   const getData = await fetch(url, options);
@@ -33,4 +27,19 @@ async function asyncGetData(url, options) {
     return resObject;
   });
   return list;
+}
+
+let object = {
+  name: 'Mike',
+  age: 25,
+  city: 'Georgia',
+  country: 'USA',
+};
+function makeIteratorForObject(obj) {
+  obj[Symbol.iterator] = function* () {
+    for (const key in obj) {
+      if (Object.hasOwnProperty.call(obj, key)) {
+      }
+    }
+  };
 }
